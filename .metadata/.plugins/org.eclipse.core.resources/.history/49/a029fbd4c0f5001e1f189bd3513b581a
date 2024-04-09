@@ -1,0 +1,72 @@
+package com.miapp.biblioteca.service;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import com.miapp.biblioteca.Libro;
+
+public class LibroServicio {
+
+	private ArrayList<Libro> biblioteca = new ArrayList(); // Creamos un arrayList biblioteca
+	
+	public LibroServicio(ArrayList<Libro> biblioteca){ // Constructor
+		this.biblioteca = biblioteca;
+	}
+	
+	
+	public void nuevoLibro(String titulo, String autor, String ISBN, String genero) {
+	Libro nuevoLibro = new Libro(titulo,autor,ISBN ,genero); // Creamos un objeto de tipo libro
+	
+	biblioteca.add(nuevoLibro); //Ingresamos el nuevo libro en el arrayList biblioteca 	
+		
+	}
+	
+	//METODO PARA OBTENER LOS LIBROS DE TODA LA BIBLIOTECA
+	public ArrayList<Libro> consultarBiblioteca(){
+		return biblioteca;
+	}
+	
+	
+	//METODO PARA ACTUALIZAR LA INFORMACION DE UN LIBRO
+	public void actualizarLibro(String ISBN, String nuevoTitulo, String nuevoAutor, String nuevoGenero) {
+		
+		for (Libro libro : biblioteca) {
+			
+			if (libro.getISNB().equals(ISBN)){ // Corroboramos que el ISBN sea el del libro que queremos actualizar
+				libro.setTitulo(nuevoTitulo);
+				libro.setAutor(nuevoAutor);
+				libro.setGenero(nuevoGenero);
+
+			}
+		}
+	}
+		
+		
+	// METODO PARA ELIMINAR UN LIBRO DEL ARRAYLIST BIBLIOTECA A TRAVES DE SU ISBN
+		public void eliminarLibro(String ISBN){
+			Iterator<Libro> it = biblioteca.iterator();
+			
+			while(it.hasNext()) {
+				if (it.next().getISNB().equals(ISBN)){
+					it.remove();
+				}
+			}
+	}
+	
+	
+	// METODO PARA BUSCAR UN LIBRO DE LA BIBLIOTECA
+		
+		public Libro buscarLibroPorISBN(String ISBN){
+			for(Libro libro : biblioteca){
+				if (libro.getISBN()
+			}
+			
+		}
+	
+	
+	
+	
+	
+	
+	
+}

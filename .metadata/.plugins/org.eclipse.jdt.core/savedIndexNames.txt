@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+C:\Users\mrtdh\OneDrive\Escritorio\Estudio\03 - Alkemy\Biblioteca_PF\.metadata\.plugins\org.eclipse.jdt.core
+143947086.index
+1696264553.index
+1865797976.index

@@ -1,0 +1,84 @@
+package com.miapp.biblioteca.service;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import com.miapp.biblioteca.Libro;
+import com.miapp.biblioteca.Usuario;
+
+public class UsuarioServicio {
+
+	// ARRAYLIST DONDE ALMACENAREMOS LOS USUARIOS QUE SE VAYAN CREANDO
+	private ArrayList<Usuario> usuarios;
+	
+	
+	// CONSTRUCTOR
+	public UsuarioServicio(ArrayList<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+	
+	
+	//METODO PARA CREAR NUEVO USUARIO
+	public void crearUsuario(String nombre, String id){
+		Usuario nuevoUsuario = new Usuario(nombre,id);
+		usuarios.add(nuevoUsuario);
+
+	}
+	
+	
+	// METODO PARA ACTUALIZAR LOS DATOS DE UN USUARIO
+	public void actualizarUsuario(String id, String nuevoNombre){
+		for(Usuario usuario : usuarios) {
+			if(usuario.getId().equals(id)){
+				usuario.setNombre(nuevoNombre);
+				return;
+			}
+		}
+	}
+	
+	
+	// METODO PARA BUSCAR UN USUARIOS POR ID
+	public Usuario buscarUsuarioPorID(String id){
+		for(Usuario usuario : usuarios){
+			if (usuario.getId().equals(id)){
+				return usuario;}	
+		}
+		return null; // DEVUELVE UN SOLO LIBRO YA QUE LA BUSQUEDA ES POR ISBN
+	}
+	
+	// METODO PARA DEVOLVER TODOS LOS USUARIOS
+	public ArrayList<Usuario> consultarUsuarios(){
+		return usuarios;
+	}
+	
+	
+
+	
+	// METODO PARA ELIMINAR USUARIO DE LA LISTA
+	public void eliminarUsuario(String id){
+		Iterator<Usuario> it = usuarios.iterator();
+		while(it.hasNext()){
+			if (it.next().getId().equals(id)){
+				it.remove();
+			}	
+		}
+	}
+	
+	
+	// METODO PARA AGREGAR UN LIBRO PRESTADO A UN USUARIO
+	public void prestarLibro(Libro libro, Usuario usuario){
+		if (libro.getDisponible()) {
+			usuario.getLibrosPrestados().add(libro);
+			libro.setDisponible(false);
+		}else{System.out.println("El libro no está disponible para prestamo");}	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
